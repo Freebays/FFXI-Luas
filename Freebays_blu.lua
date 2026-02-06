@@ -1,6 +1,8 @@
 lock_weapons_during_combat = true
 TP_Mode = 'Physical' --- Default mode (Physical or Magic)
 
+--TEST TO SEE IF THIS WORKED
+
 gear = {}
 gear.Chirich1 = { name="Chirich Ring +1", bag="Wardrobe7" }
 gear.Chirich2 = { name="Chirich Ring +1", bag="Wardrobe6" }
