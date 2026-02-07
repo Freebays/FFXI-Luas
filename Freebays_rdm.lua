@@ -67,6 +67,8 @@ function get_sets()
         back="",
     }
 
+    ----------ENHANCING SETS---------
+
     sets.midcast.enhancingduration = {
         main="Pukulatmuj +1",
         sub="Ammurapi Shield",
@@ -114,10 +116,18 @@ function get_sets()
     }
 	
 	sets.midcast.Aquaveil = {
-		head="Amalric Coif +1",
+		head="Amalric Coif +1" augments={'MP+80','Mag. Acc. +20','"Mag. Atk. Bns. +20"',},
         legs="Shedir Seraweels",
         waist="Emphatikos Rope",
 	}
+
+    sets.midcast.Refresh = {
+        head="Amalric Coif +1" augments={'MP+80','Mag. Acc. +20','"Mag. Atk. Bns. +20"',},
+        body="Atrophy Tabard +3",
+        waist="Gishdubar Sash",
+    }
+
+    ------------HEALING SETS-----------------------
 
     sets.midcast.healing = {
         main="Daybreak",
@@ -137,6 +147,8 @@ function get_sets()
         back=gear.Sucellos_MND,
 
     }
+
+    ----------------ELEMENTAL SETS------------------
 
     sets.midcast.elementalfreenuke = {
         main="Daybreak",
@@ -430,7 +442,7 @@ function get_sets()
 
     sets.SeraphBlade = {
         main="Crocea Mors",
-        sub="Daybreak",
+        sub="Daybreak", -- Debating on Swapping to Thribon for SB --> RLB --> SB Skillchains rather than Super SB
         ammo="Sroda Tathlum",
         head="Lethargy chappel +2",
         body="Lethargy sayon +2",
@@ -657,6 +669,9 @@ function midcast(spell)
 --This function performs after precast but before the action is sent to the server
 local set = nil
 
+
+----ENHANCING MAGIC----
+
     if spell.skill == "Enhancing Magic" then
         local base_set = sets.midcast.enhancingduration
         
@@ -676,6 +691,7 @@ local set = nil
             ['Gain-CHR'] = true,
             ['Temper'] = true,
             ['Temper II'] = true,
+            ['Stoneskin'] = true,
         }
 		
 		local barspells = {
@@ -711,15 +727,23 @@ local set = nil
         if spell.english == "Stoneskin" then
             base_set = set_combine(base_set, sets.midcast.Stoneskin)
         end
-        
+
+        if spell.english == "Refresh III" then
+            base_set = set_combine(base_set, sets.midcast.Refresh)
+        end
+
 		equip(lock_weapons(base_set))
 		
 	end
-	
+
+-----HEALING MAGIC-----
+
 	if spell.skill == "Healing Magic" then
         equip(lock_weapons(sets.midcast.healing))
         end
 	
+-----ENFEEBLING MAGIC-----
+
 	if spell.skill == "Enfeebling Magic" then
     local frazdistract = {
         ['Distract'] = true,
