@@ -13,7 +13,6 @@ gear.Chirich2 = { name="Chirich Ring +1", bag="Wardrobe6" }
 
 function get_sets()
 --this function prepares my equipment get_sets
---I'm unsure if I need to add augement arguments for each piece of AF'
 
     sets.precast = {}
 
@@ -105,20 +104,19 @@ function get_sets()
     }
 	
 	sets.midcast.Barspells = {
-	
 		neck="Sroda Necklace",
 		legs="Shedir Seraweels",
-	
 	}
 	
+    sets.midcast.Stoneskin = {
+        main="Pukulatmuj +1",
+        legs="Shedir Seraweels",
+    }
 	
 	sets.midcast.Aquaveil = {
 		head="Amalric Coif +1",
-		
-	
-	
-	
-	
+        legs="Shedir Seraweels",
+        waist="Emphatikos Rope",
 	}
 
     sets.midcast.healing = {
@@ -174,7 +172,6 @@ function get_sets()
         left_ring="Resonance Ring",
         right_ring="Jhakri ring",
         back="Seshaw cape",
-
     }
 	
 --Enfeebling sets are broken down into three parts: Enfeeble, for general usage enfeebling, Enfeeblepotency for spells that don't deal with
@@ -559,7 +556,7 @@ function equip_current_tp_set()
 
     local base_set = nil
 
-    -- Base TP mode selection
+    -- Base TP mode selection, want to migrate to Switch Case?
     if TP_Mode == 'Physical' then
         base_set = sets.tp
     elseif TP_Mode == 'Magic' then
@@ -696,7 +693,6 @@ local set = nil
 			['Barvirus'] = true,
 			['Barpetrify'] = true,
 			['Baramnesia'] = true,
-			
 		}
 		
 		
@@ -707,7 +703,15 @@ local set = nil
 		if barspells[spell.english] then
 			base_set = set_combine(base_set, sets.midcast.Barspells)
 		end
-		
+
+        if spell.english == "Aquaveil" then
+            base_set = set_combine(base_set, sets.midcast.Aquaveil)
+        end
+        
+        if spell.english == "Stoneskin" then
+            base_set = set_combine(base_set, sets.midcast.Stoneskin)
+        end
+        
 		equip(lock_weapons(base_set))
 		
 	end
