@@ -116,13 +116,13 @@ function get_sets()
     }
 	
 	sets.midcast.Aquaveil = {
-		head="Amalric Coif +1" augments={'MP+80','Mag. Acc. +20','"Mag. Atk. Bns. +20"',},
+		head="Amalric Coif +1", augments={'MP+80','Mag. Acc. +20','"Mag. Atk. Bns. +20"',},
         legs="Shedir Seraweels",
         waist="Emphatikos Rope",
 	}
 
     sets.midcast.Refresh = {
-        head="Amalric Coif +1" augments={'MP+80','Mag. Acc. +20','"Mag. Atk. Bns. +20"',},
+        head="Amalric Coif +1", augments={'MP+80','Mag. Acc. +20','"Mag. Atk. Bns. +20"',},
         body="Atrophy Tabard +3",
         waist="Gishdubar Sash",
     }
