@@ -278,7 +278,7 @@ function get_sets()
         legs="Carmine Cuisses +1",
         feet="Malignance boots",
         neck="Elite royal collar",
-        waist="Flume Belt +1",
+        waist="Platinum Moogle Belt",
         left_ear="Eabani Earring",
         right_ear="Upsurge Earring",
         left_ring="Yacuruna Ring",
@@ -436,7 +436,7 @@ function get_sets()
         left_ear="Malignance Earring",
         right_ear="Moonshade Earring", augments={'"Mag.Atk.Bns"+4','TP Bonus +250'},
         left_ring="Epaminondas's ring",
-        right_ring="Sroda Ring",
+        right_ring="Cornelia's Ring",
         back=gear.Sucellos_STR,
     }
 
@@ -453,7 +453,7 @@ function get_sets()
         waist="Orpheus's Sash",
         left_ear="Malignance Earring",
         right_ear="Moonshade Earring", augments={'"Mag.Atk.Bns"+4','TP Bonus +250'},
-        left_ring="Epaminondas's ring",
+        left_ring="Cornelia's Ring",
         right_ring="Weatherspoon ring",
         back=gear.Sucellos_MND,
 
@@ -472,8 +472,8 @@ function get_sets()
         waist="Orpheus's Sash",
         left_ear="Malignance Earring",
         right_ear="Moonshade Earring", augments={'"Mag.Atk.Bns"+4','TP Bonus +250'},
-        left_ring="Epaminondas's ring",
-        right_ring="Weatherspoon ring",
+        left_ring="Cornelia's Ring",
+        right_ring="Epaminondas's ring",
         back=gear.Sucellos_MND,
 
     }
@@ -492,7 +492,7 @@ function get_sets()
         left_ear="Malignance Earring",
         right_ear="Friomisi Earring",
         left_ring="Epaminondas's ring", -- 
-        right_ring="Weatherspoon ring", -- Replace with Freke Ring
+        right_ring="Cornelia's Ring", -- Replace with Freke Ring
         back=gear.Sucellos_MND,
 
     }
@@ -512,7 +512,7 @@ function get_sets()
         left_ear="Malignance Earring",
         right_ear="Moonshade Earring", augments={'"Mag.Atk.Bns"+4','TP Bonus +250'},
         left_ring="Epaminondas's ring",
-        right_ring="Sroda Ring",
+        right_ring="Cornelia's Ring",
         back=gear.Sucellos_STR,
 
 	}
