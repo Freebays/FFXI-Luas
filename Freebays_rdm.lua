@@ -435,7 +435,7 @@ function get_sets()
         waist="Sailfi Belt +1",
         left_ear="Malignance Earring",
         right_ear="Moonshade Earring", augments={'"Mag.Atk.Bns"+4','TP Bonus +250'},
-        left_ring="Epaminondas's ring",
+        left_ring="Sroda Ring",
         right_ring="Cornelia's Ring",
         back=gear.Sucellos_STR,
     }
@@ -511,7 +511,7 @@ function get_sets()
         waist="Sailfi Belt +1",
         left_ear="Malignance Earring",
         right_ear="Moonshade Earring", augments={'"Mag.Atk.Bns"+4','TP Bonus +250'},
-        left_ring="Epaminondas's ring",
+        left_ring="Sroda Ring",
         right_ring="Cornelia's Ring",
         back=gear.Sucellos_STR,
 
