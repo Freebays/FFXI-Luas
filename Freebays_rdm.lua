@@ -113,6 +113,7 @@ function get_sets()
     sets.midcast.Stoneskin = {
         main="Pukulatmuj +1",
         legs="Shedir Seraweels",
+        right_ear="Earthcry Earring",
     }
 	
 	sets.midcast.Aquaveil = {
@@ -286,7 +287,7 @@ function get_sets()
         back="Moonbeam Cape",
     }
 
---Melee oriented sets: this deals with TP and Weaponskills.
+--------------------------TP SETS---------------------------------------
 
     sets.tp = {
         main="Naegling",
@@ -422,6 +423,9 @@ function get_sets()
 
 	}
 	
+
+------------------------WEAPONSKILL SETS-------------------------
+
     sets.SavageBlade = {
         main="Naegling",
         sub="Thibron", augments={'TP Bonus +1000',},
@@ -516,6 +520,8 @@ function get_sets()
         back=gear.Sucellos_STR,
 
 	}
+
+-----------------------------HUD TEXT-----------------------------------------------
 
 	function init_hud()
 		hud_text = texts.new()
