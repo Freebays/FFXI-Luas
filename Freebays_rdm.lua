@@ -444,6 +444,23 @@ function get_sets()
         back=gear.Sucellos_STR,
     }
 
+    sets.KoR = {
+        ---MAIN AND SUB WILL BE DETERMINED AFTER EXCAL IS FULLY AUGMENTED---
+        ammo="Oshasha's treatise",
+        head="Vitiation chapeau +3",
+        body="Vitiation tabard +3",
+        hands="Atrophy Gloves +3",
+        legs="Jhakri slops +2",
+        feet="lethargy houseaux +3",
+        neck="Republican Platinum Medal",
+        waist="Sailfi Belt +1",
+        left_ear="Sherida Earring",
+        right_ear="Moonshade Earring", augments={'"Mag.Atk.Bns"+4','TP Bonus +250'},
+        left_ring="Sroda Ring",
+        right_ring="Cornelia's Ring",
+        back=gear.Sucellos_STR,
+    }
+
     sets.SeraphBlade = {
         main="Crocea Mors",
         sub="Daybreak", -- Debating on Swapping to Thribon for SB --> RLB --> SB Skillchains rather than Super SB
@@ -648,10 +665,10 @@ function precast(spell)
         if spell.english == 'Savage Blade' then
             equip(lock_weapons(sets.SavageBlade))
             end
-        end
+            end
         if spell.english == 'Seraph Blade' then
             equip(lock_weapons(sets.SeraphBlade))
-        end
+            end
 		if spell.english == 'Red Lotus Blade' then
 			equip(lock_weapons(sets.RedLotusBlade))
 			end
@@ -661,6 +678,9 @@ function precast(spell)
 		if spell.english == 'Black Halo' then
 			equip(lock_weapons(sets.BlackHalo))
 			end
+        if spell.english == 'Knights of Round' then
+            equip(lock_weapons(sets.KoR))
+            end
     if spell.type=="JobAbility" and spell.english == 'Composure' then
             equip(lock_weapons(sets.precast.composure))
         end
