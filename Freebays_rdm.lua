@@ -455,7 +455,7 @@ function get_sets()
         neck="Republican Platinum Medal",
         waist="Sailfi Belt +1",
         left_ear="Hoxne earring",
-        right_ear="Moonshade Earring", augments={'"Mag.Atk.Bns"+4','TP Bonus +250'},
+        left_ear="Sherida Earring",
         left_ring="Sroda Ring",
         right_ring="Cornelia's Ring",
         back=gear.Sucellos_STR,
