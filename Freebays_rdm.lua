@@ -454,7 +454,7 @@ function get_sets()
         feet="lethargy houseaux +3",
         neck="Republican Platinum Medal",
         waist="Sailfi Belt +1",
-        left_ear="Ishvara earring",
+        right_ear="Ishvara earring",
         left_ear="Sherida Earring",
         left_ring="Sroda Ring",
         right_ring="Cornelia's Ring",
