@@ -368,7 +368,7 @@ function get_sets()
 
     sets.tpEx = {
         main="Excalibur",
-        sub="Ternion dagger +1", augments={'DMG:+17', 'Accuracy+40', 'Mag. Acc.+40', 'Weapon skill damage +5%',},
+        sub="Ternion dagger +1", augments={'DMG:+17','Accuracy+40','Mag. Acc.+40','Weapon skill damage +5%',},
         ammo="Aurgelmir orb",
         head="Malignance chapeau",
         body="Malignance Tabard",
@@ -655,7 +655,7 @@ function equip_current_tp_set()
     elseif TP_Mode == 'Magic' then
         base_set = sets.tpmagic
     elseif TP_Mode == 'Excalibur' then
-        base_set = sets.tpEx -- placeholder, make later
+        base_set = sets.tpEx
     elseif TP_Mode == 'Blunt' then
 		base_set = sets.blunt
 	elseif TP_Mode == 'TH' then
@@ -668,11 +668,11 @@ function equip_current_tp_set()
     if DT_Mode == 'On' then
         if TP_Mode == 'Magic' and sets.tpmagicDT then
             base_set = sets.tpmagicDT
-        elseif sets.tpDT then
+        elseif TP_Mode == 'Physical' and sets.tpDT then
             base_set = sets.tpDT
-        elseif sets.tpExDT then
+        elseif TP_Mode == 'Excalibur' and sets.tpExDT then
             base_set = sets.tpExDT
-        elseif sets.bluntDT then
+        elseif TP_Mode == 'Blunt' and sets.bluntDT then
             base_set = sets.bluntDT
         end
     end
@@ -685,8 +685,8 @@ function self_command(command)
         if TP_Mode == 'Physical' then
             TP_Mode = 'Magic'
         elseif TP_Mode == 'Magic' then
-            TP_Mode = 'Piercing'
-        elseif TP_Mode == 'Piercing' then
+            TP_Mode = 'Excalibur'
+        elseif TP_Mode == 'Excalibur' then
             TP_Mode = 'Blunt'
         elseif TP_Mode == 'Blunt' then
 			TP_Mode = 'TH'
