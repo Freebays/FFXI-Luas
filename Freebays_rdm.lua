@@ -368,7 +368,7 @@ function get_sets()
 
     sets.tpEx = {
         main="Excalibur",
-        sub="Ternion Dagger +1",
+        sub="Ternion dagger +1", augments={'DMG:+17', 'Accuracy+40', 'Mag. Acc.+40', 'Weapon skill damage +5%',},
         ammo="Aurgelmir orb",
         head="Malignance chapeau",
         body="Malignance Tabard",
@@ -387,7 +387,7 @@ function get_sets()
 
     sets.tpExDT = {
         main="Excalibur",
-        sub="Ternion Dagger +1",
+        sub="Ternion dagger +1", augments={'DMG:+17', 'Accuracy+40', 'Mag. Acc.+40', 'Weapon skill damage +5%',},
         ammo="Aurgelmir orb",
         head="Malignance chapeau",
         body="Lethargy Sayon +2",
