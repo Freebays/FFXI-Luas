@@ -271,6 +271,7 @@ function get_sets()
     }
 
     sets.aftercast.idledt = {
+        main="Excalibur",
         sub="Sacro Bulwark",
         ammo="Staunch Tathlum",
         head="Malignance Chapeau",
@@ -318,7 +319,7 @@ function get_sets()
         legs="Malignance tights",
         feet="Malignance boots",
         neck="Anu Torque",
-        waist="Flume Belt +1",
+        waist="Platinum moogle belt",
         left_ear="Dedition Earring",
         right_ear="Sherida Earring",
         left_ring=gear.Chirich1,
@@ -359,6 +360,44 @@ function get_sets()
         waist="Orpheus's Sash",
         left_ear="Eabani Earring",
         right_ear="Dedition Earring",
+        left_ring=gear.Chirich1,
+        right_ring="Defending Ring",
+        back=gear.Sucellos_DW,
+
+    }
+
+    sets.tpEx = {
+        main="Excalibur",
+        sub="Ternion Dagger +1",
+        ammo="Aurgelmir orb",
+        head="Malignance chapeau",
+        body="Malignance Tabard",
+        hands="Malignance gloves",
+        legs="Malignance tights",
+        feet="Malignance boots",
+        neck="Anu Torque",
+        waist="Windbuffet Belt +1",
+        left_ear="Sherida Earring",
+        right_ear="Dedition Earring",
+        left_ring=gear.Chirich1,
+        right_ring=gear.Chirich2,
+        back=gear.Sucellos_DW,
+
+    }
+
+    sets.tpExDT = {
+        main="Excalibur",
+        sub="Ternion Dagger +1",
+        ammo="Aurgelmir orb",
+        head="Malignance chapeau",
+        body="Lethargy Sayon +2",
+        hands="Malignance gloves",
+        legs="Malignance tights",
+        feet="Malignance boots",
+        neck="Anu Torque",
+        waist="Platinum moogle belt",
+        left_ear="Dedition Earring",
+        right_ear="Sherida Earring",
         left_ring=gear.Chirich1,
         right_ring="Defending Ring",
         back=gear.Sucellos_DW,
@@ -422,6 +461,25 @@ function get_sets()
         back=gear.Sucellos_DW,
 
 	}
+
+    sets.bluntDT = {
+        main="Maxentius",
+        sub="Thibron", augments={'TP Bonus +1000',},
+        ammo="Aurgelmir orb",
+        head="Malignance chapeau",
+        body="Lethargy Sayon +2",
+        hands="Malignance gloves",
+        legs="Malignance tights",
+        feet="Malignance boots",
+        neck="Anu Torque",
+        waist="Platinum moogle belt",
+        left_ear="Dedition Earring",
+        right_ear="Sherida Earring",
+        left_ring=gear.Chirich1,
+        right_ring="Defending Ring",
+        back=gear.Sucellos_DW,
+
+    }
 	
 
 ------------------------WEAPONSKILL SETS-------------------------
@@ -445,7 +503,8 @@ function get_sets()
     }
 
     sets.KoR = {
-        ---MAIN AND SUB WILL BE DETERMINED AFTER EXCAL IS FULLY AUGMENTED---
+        main="Excalibur",
+        sub="Ternion Dagger +1",
         ammo="Oshasha's treatise",
         head="Vitiation chapeau +3",
         body="Vitiation tabard +3",
@@ -519,7 +578,6 @@ function get_sets()
     }
 	
 	sets.BlackHalo = {
-	
 		main="Maxentius",
         sub="Thibron", augments={'TP Bonus +1000',},
         ammo="Oshasha's treatise",
@@ -596,8 +654,8 @@ function equip_current_tp_set()
         base_set = sets.tp
     elseif TP_Mode == 'Magic' then
         base_set = sets.tpmagic
-    elseif TP_Mode == 'Piercing' then
-        base_set = sets.tp -- placeholder, make later
+    elseif TP_Mode == 'Excalibur' then
+        base_set = sets.tpEx -- placeholder, make later
     elseif TP_Mode == 'Blunt' then
 		base_set = sets.blunt
 	elseif TP_Mode == 'TH' then
@@ -612,6 +670,10 @@ function equip_current_tp_set()
             base_set = sets.tpmagicDT
         elseif sets.tpDT then
             base_set = sets.tpDT
+        elseif sets.tpExDT then
+            base_set = sets.tpExDT
+        elseif sets.bluntDT then
+            base_set = sets.bluntDT
         end
     end
 
