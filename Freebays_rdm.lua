@@ -280,7 +280,7 @@ function get_sets()
         legs="Carmine Cuisses +1",
         feet="Malignance boots",
         neck="Elite royal collar",
-        waist="Platinum Moogle Belt",
+        waist="Flume Belt +1",
         left_ear="Eabani Earring",
         right_ear="Upsurge Earring",
         left_ring="Yacuruna Ring",
@@ -863,8 +863,20 @@ local set = nil
     end
 
     equip(lock_weapons(base_set))
+    
 end
+
+ --------ELEMENTAL MAGIC------------
+
+if spell.skill == "Elemental Magic" then
+    equip(lock_weapons(sets.midcast.elementalfreenuke))
 end
+
+--------------
+
+end
+
+
 
 ------------------------------------------------
 
