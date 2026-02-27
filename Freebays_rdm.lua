@@ -104,6 +104,24 @@ function get_sets()
         right_ring="Stikini Ring +1",
         back="Ghostfyre Cape", augments={'Enfb.mag. skill +1','Enha.mag. skill +8','Mag. Acc.+10','Enh. Mag. eff. dur. +20',},
     }
+
+    sets.midcast.Phalanx = {
+        main="Egeking",
+        sub="Ammurapi Shield",
+        ammo="Staunch Tathlum",
+        head={ name="Taeon Chapeau", augments={'Phalanx +3',}},
+        body={ name="Taeon Tabard", augments={'Phalanx +3',}},
+        hands={ name="Taeon Gloves", augments={'Phalanx +3',}},
+        legs={ name="Taeon Tights", augments={'Phalanx +2',}},
+        feet={ name="Taeon Boots", augments={'Phalanx +3',}},
+        neck={ name="Dls. Torque +2", augments={'Path: A',}},
+        waist="Olympus Sash",
+        left_ear="Mimir Earring",
+        right_ear={ name="Leth. Earring +1", augments={'System: 1 ID: 1676 Val: 0','Accuracy+11','Mag. Acc.+11','"Dbl.Atk."+3',}},
+        left_ring="Stikini Ring +1",
+        right_ring="Stikini Ring +1",
+        back={ name="Ghostfyre Cape", augments={'Enfb.mag. skill +1','Enha.mag. skill +8','Mag. Acc.+10','Enh. Mag. eff. dur. +20',}},
+    }
 	
 	sets.midcast.Barspells = {
 		neck="Sroda Necklace",
@@ -248,6 +266,25 @@ function get_sets()
         back=gear.Sucellos_MND,
 	
 	}
+
+    sets.midcast.EnfeebleDuration = {
+        main="Daybreak",
+		sub="Ammurapi shield",
+		range="Ullr",
+        head="Lethargy Chappel +2",
+        body="Lethargy Sayon +2",
+        hands="Lethargy Gantherots +2",
+		legs="Lethargy Fuseau +2",
+        feet="Lethargy Houseaux +3",
+        neck="Duelist's Torque +2",
+        waist="Ovate Rope",
+        left_ear="Malignance earring",
+        right_ear="Snotra Earring",
+        left_ring="Kishar Ring",
+        right_ring="Stikini Ring +1",
+        back=gear.Sucellos_MND,
+
+    }
 	
 --Aftercast set: based on thinking, I think this will just revert back to idle or TP?
     sets.aftercast = {}
@@ -820,6 +857,10 @@ local set = nil
             base_set = set_combine(base_set, sets.midcast.Refresh)
         end
 
+        if spell.english == "Phalanx" or spell.english == "Phalanx II" then
+            base_set = sets.midcast.Phalanx
+        end
+
 		equip(lock_weapons(base_set))
 		
 	end
@@ -850,10 +891,20 @@ local set = nil
         ['Addle II'] = true,
     }
 
+    local enfeebleduration = {
+        ['Silence'] = true,
+        ['Sleep'] = true,
+        ['Sleep II'] = true,
+        ['Bind'] = true,
+        ['Break'] = true,
+    }
+
     local base_set = sets.midcast.enfeebling
 
     if frazdistract[spell.english] then
         base_set = sets.midcast.enfeebleFD
+    elseif enfeebleduration[spell.english] then
+        base_set = sets.midcast.EnfeebleDuration
     elseif enfeeblepotency[spell.english] then
         base_set = sets.midcast.EnfeebleP
     end
