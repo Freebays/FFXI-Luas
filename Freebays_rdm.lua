@@ -158,14 +158,15 @@ function get_sets()
         legs="Kaykaus Tights +1", augments={'MP+80', 'MND+12', 'Mag. Acc.+20'},
         feet="Kaykaus boots +1", augments={'MP+80','"Cure" spellcasting time -7%', 'Enmity-6'},
         neck="Duelist's Torque +2",
-        waist="Latria Sash",
+        waist="Gishdubar sash",
         left_ear="Malignance earring",
         right_ear="Meili Earring",
         left_ring="Stikini Ring +1",
         right_ring="Sirona's Ring",
         back=gear.Sucellos_MND,
-
     }
+
+
 
     ----------------ELEMENTAL SETS------------------
 
@@ -320,7 +321,7 @@ function get_sets()
         waist="Flume Belt +1",
         left_ear="Eabani Earring",
         right_ear="Upsurge Earring",
-        left_ring="Yacuruna Ring",
+        left_ring="Gelatinous Ring",
         right_ring="Defending Ring",
         back="Moonbeam Cape",
     }
