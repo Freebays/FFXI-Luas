@@ -338,12 +338,12 @@ function get_sets()
         legs="Malignance tights",
         feet="Malignance boots",
         neck="Anu Torque",
-        waist="Windbuffet Belt +1",
+        waist="Reiki Yotai",
         left_ear="Sherida Earring",
-        right_ear="Dedition Earring",
+        right_ear="Eabani earring",
         left_ring=gear.Chirich1,
         right_ring=gear.Chirich2,
-        back=gear.Sucellos_DW,
+        back="Null Shawl",
 
     }
 	
@@ -414,12 +414,12 @@ function get_sets()
         legs="Malignance tights",
         feet="Malignance boots",
         neck="Anu Torque",
-        waist="Windbuffet Belt +1",
+        waist="Reiki Yotai",
         left_ear="Sherida Earring",
-        right_ear="Dedition Earring",
+        right_ear="Eabani earring",
         left_ring=gear.Chirich1,
         right_ring=gear.Chirich2,
-        back=gear.Sucellos_DW,
+        back="Null Shawl",
 
     }
 
@@ -491,12 +491,12 @@ function get_sets()
         legs="Malignance tights",
         feet="Malignance boots",
         neck="Anu Torque",
-        waist="Windbuffet Belt +1",
+        waist="Reiki Yotai",
         left_ear="Sherida Earring",
-        right_ear="Dedition Earring",
+        right_ear="Eabani earring",
         left_ring=gear.Chirich1,
         right_ring=gear.Chirich2,
-        back=gear.Sucellos_DW,
+        back="Null Shawl",
 
 	}
 
