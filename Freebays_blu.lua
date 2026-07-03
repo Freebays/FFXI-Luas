@@ -20,19 +20,21 @@ function get_sets()
 	
 	sets.precast.fc = {
 
-		ammo="",
-        head="",
-        body="",
-        hands="",
-        legs="",
-        feet="",
-        neck="",
-        waist="",
-        left_ear="",
-        right_ear="",
-        left_ring="",
-        right_ring="",
-        back="",
+		main={ name="Iris", augments={'Blue Magic skill +15','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
+        sub={ name="Colada", augments={'DEX+8','Accuracy+29','"Treasure Hunter"+2',}},
+        ammo="Impatiens",
+        head={ name="Amalric Coif +1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        body="Luhlaza Jubbah +3",
+        hands="Jhakri Cuffs +2",
+        legs="Aya. Cosciales +2",
+        feet="Jhakri Pigaches +2",
+        neck="Voltsurge Torque",
+        waist="Witful Belt",
+        left_ear="Loquac. Earring",
+        right_ear={ name="Hashishin Earring", augments={'System: 1 ID: 1676 Val: 0','Accuracy+6','Mag. Acc.+6',}},
+        left_ring="Prolix Ring",
+        right_ring="Kishar Ring",
+        back="Swith Cape",
 
 	}
 
@@ -77,11 +79,48 @@ function get_sets()
         back="",
 	
 	}
+
+    sets.aftercast.idledt = {
+        
+        ammo="Staunch Tathlum",
+        head="Malignance Chapeau",
+        body="Malignance Tabard",
+        hands="Malignance gloves",
+        legs="Carmine Cuisses +1",
+        feet="Malignance boots",
+        neck="Elite royal collar",
+        waist="Flume Belt +1",
+        left_ear="Eabani Earring",
+        right_ear="Upsurge Earring",
+        left_ring="Gelatinous Ring",
+        right_ring="Defending Ring",
+        back="Moonbeam Cape",
+    }
 	
 ----------------------------------------------------
 
 	--MELEE SETS--
-	sets.tp = {
+	
+    sets.tp = {
+
+		ammo="Aurgelmir Orb",
+        head={ name="Adhemar Bonnet +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        body={ name="Adhemar Jacket +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        hands={ name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        legs={ name="Herculean Trousers", augments={'"Triple Atk."+4','Attack+14',}},
+        feet={ name="Herculean Boots", augments={'"Triple Atk."+4','DEX+10','Accuracy+2','Attack+1',}},
+        neck={ name="Mirage Stole +1", augments={'Path: A',}},
+        waist="Sailfi Belt +1",
+        left_ear="Dedition Earring",
+        right_ear="Suppanomimi",
+        left_ring=gear.Chirich1,
+        right_ring=gear.Chirich2,
+        back=gear.Rosmertas_TP,
+
+    }
+    
+    
+    sets.tp2 = {
 	
 		main="Naegling",
 		sub="Thibron", augments={'TP Bonus +1000'},
@@ -103,22 +142,42 @@ function get_sets()
 	
 	sets.tpDT = {
 	
-		ammo="",
-        head="",
-        body="",
-        hands="",
-        legs="",
-        feet="",
-        neck="",
-        waist="",
+		ammo="Aurgelmir orb",
+        head="Malignance chapeau",
+        body="Malignance Tabard",
+        hands="Malignance gloves",
+        legs="Malignance tights",
+        feet="Malignance boots",
+        neck="Mirage stole +1",
+        waist="Reiki Yotai",
         left_ear="Dedition Earring",
         right_ear="Suppanomimi",
-        left_ring="",
-        right_ring="",
-        back="",
+        left_ring=gear.Chirich1,
+        right_ring="Defending Ring",
+        back=gear.Rosmertas_TP,
 		
 	}
 	
+
+    sets.blunt = {
+
+        main="Maxentius",
+        sub="Thibron", augments={'TP Bonus +1000',},
+        ammo="Aurgelmir Orb",
+        head={ name="Adhemar Bonnet +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        body={ name="Adhemar Jacket +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        hands={ name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        legs={ name="Herculean Trousers", augments={'"Triple Atk."+4','Attack+14',}},
+        feet={ name="Herculean Boots", augments={'"Triple Atk."+4','DEX+10','Accuracy+2','Attack+1',}},
+        neck={ name="Mirage Stole +1", augments={'Path: A',}},
+        waist="Sailfi Belt +1",
+        left_ear="Dedition Earring",
+        right_ear="Suppanomimi",
+        left_ring=gear.Chirich1,
+        right_ring=gear.Chirich2,
+        back=gear.Rosmertas_TP,
+    }
+
 	
 	sets.SavageBlade = {
 	
