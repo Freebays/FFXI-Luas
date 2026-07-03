@@ -1,6 +1,7 @@
 lock_weapons_during_combat = true
-TP_Mode = 'Physical' --- Default mode (Physical or Magic)
-
+TP_Mode = 'Physical' --Does Physical, Magical, Piercing, Treasure Hunter, Odin?
+DT_Mode = 'Off'
+hud_text = nil
 --TEST TO SEE IF THIS WORKED
 
 gear = {}
@@ -178,27 +179,78 @@ function get_sets()
         back=gear.Rosmertas_TP,
     }
 
+    sets.bluntDT = {
+	
+        main="Maxentius",
+        sub="Thibron", augments={'TP Bonus +1000',},
+		ammo="Aurgelmir orb",
+        head="Malignance chapeau",
+        body="Malignance Tabard",
+        hands="Malignance gloves",
+        legs="Malignance tights",
+        feet="Malignance boots",
+        neck="Mirage stole +1",
+        waist="Reiki Yotai",
+        left_ear="Dedition Earring",
+        right_ear="Suppanomimi",
+        left_ring=gear.Chirich1,
+        right_ring="Defending Ring",
+        back=gear.Rosmertas_TP,
+		
+	}
+
+    sets.learning = {
+
+
+
+
+
+    }
+
 	
 	sets.SavageBlade = {
 	
 		main="Naegling",
 		sub="Thibron", augments={'TP Bonus +1000',},
 		ammo="Aurgelmir orb",
-        head="",
-        body="",
-        hands="",
-        legs="Jhakri slops +2",
-        feet="",
+        head="Luhlaza keffiyeh +3",
+        body="Assimilator's jubbah +2",
+        hands="Jhakri cuffs +2",
+        legs="Luhlaza shalwar +3",
+        feet="CSM Boots +1",
         neck="Republican platinum medal",
-        waist="",
-        left_ear="",
+        waist="Sailfi belt +1",
+        left_ear="Regal Earring",
         right_ear="Moonshade Earring", augments={'"Mag.Atk.Bns"+4','TP Bonus +250'},
         left_ring="Epaminondas's ring",
         right_ring="Sroda Ring",
         back=gear.Rosmertas_WS,
 		
 	}
+
+-------------HUD TEXT-----------------------------
+
+	function init_hud()
+		hud_text = texts.new()
+		hud_text:font('Consolas')
+		hud_text:size(12)
+		hud_text:pos(30, 200) -- X,Y position on screen
+		hud_text:color(255, 255, 255)
+		hud_text:bg_color(0, 0, 0, 150)
+		hud_text:show()
+	end
+
+	init_hud()
 	
+end
+
+function update_hud()
+    local dt_color = DT_Mode == 'On' and '\\cs(255,50,50)' or '\\cs(50,255,50)'
+    local text = 'RDM MODE '
+    text = text .. 'TP: ' .. TP_Mode .. ' '
+    text = text .. dt_color .. 'DT: ' .. DT_Mode
+
+    hud_text:text(text)
 end
 
 function lock_weapons(equip_set)
@@ -219,61 +271,81 @@ if player.status == 'Engaged' then
         end
         return t2
         end
-		
+
+---Below two functions deal with magic vs physical TP sets, macro'd to \ on Windower
+
 function equip_current_tp_set()
-	-- Clear both rings to prevent leftovers from DT
-	equip({left_ring=empty, right_ring=empty})
-	
-    add_to_chat(122, 'Equipping TP Mode: '.. TP_Mode)
-	
+	equip({left_ring=empty, right_ring=empty}) -- clear leftover DT rings
+    
+    add_to_chat(122, 'TP Mode: '..TP_Mode..' | DT: '..DT_Mode)
+
+    local base_set = nil
+
+    -- Base TP mode selection, want to migrate to Switch Case?
     if TP_Mode == 'Physical' then
-        equip(sets.tp)
-    
-	elseif TP_Mode == 'PhysicalDT' then
-		equip(sets.tpDT)
-    
-	elseif TP_Mode == 'Magic' then
-        equip(sets.tpmagic)
-		
-	elseif TP_Mode == 'MagicDT' then
-		equip(sets.tpmagicDT)
-	end
+        base_set = sets.tp
+    elseif TP_Mode == 'Blunt' then
+        base_set = sets.blunt
+    elseif TP_Mode == 'Learning' then
+        base_set = sets.learning
+    elseif TP_Mode == 'TH' then
+		base_set = sets.th
+    end 
+
+    -- DT overlay
+    if DT_Mode == 'On' then
+        if TP_Mode == 'Physical' and sets.tpDT then
+            base_set = sets.tpDT
+        elseif TP_Mode == 'Blunt' and sets.blunt then
+            base_set = sets.bluntDT
+        end
+    end
+
+    equip(base_set)
 end
 
 function self_command(command)
-    if command == 'toggleTP' then
+     if command == 'toggleTP' then
         if TP_Mode == 'Physical' then
-            TP_Mode = 'PhysicalDT'
-        elseif TP_Mode == 'PhysicalDT' then
-            TP_Mode = 'Magic'
-        elseif TP_Mode == 'Magic' then
-            TP_Mode = 'MagicDT'
+            TP_Mode = 'Blunt'
+        elseif TP_Mode == 'Blunt' then
+            TP_Mode = 'Learning'
+        elseif TP_Mode == 'Learning' then
+            TP_Mode = 'TH'
         else
             TP_Mode = 'Physical'
         end
 		
-		add_to_chat(122, 'TP Mode: '..TP_Mode)
-		
-		if player.status == 'Engaged' then
-            equip_current_tp_set()
-            end
+        ---add_to_chat(122, 'TP Mode: '..TP_Mode)
+        if player.status == 'Engaged' then equip_current_tp_set() end
+		update_hud()
+    end
+
+    -- Toggle DT mode
+    if command == 'toggleDT' then
+        if DT_Mode == 'Off' then
+            DT_Mode = 'On'
+        else
+            DT_Mode = 'Off'
         end
+
+        ---add_to_chat(122, 'DT Mode: '..DT_Mode)
+        if player.status == 'Engaged' then equip_current_tp_set() end
+		update_hud()
+    end
+
 end
 
 function precast(spell)
 
-
-
-
-
-
-
-
-
-
-
-
-
+    if spell.action_type == 'Magic' then
+        equip(lock_weapons(sets.precast.fc))
+    end
+    if spell.type=="WeaponSkill" then
+        if spell.english == 'Savage Blade' then
+            equip(lock_weapons(sets.SavageBlade))
+            end
+        end
 
 end
 
