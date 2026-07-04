@@ -103,7 +103,8 @@ function get_sets()
 	--MELEE SETS--
 	
     sets.tp = {
-
+        main="Naegling",
+        sub="Thibron", augments={'TP Bonus +1000',},
 		ammo="Aurgelmir Orb",
         head={ name="Adhemar Bonnet +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         body={ name="Adhemar Jacket +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
@@ -116,7 +117,7 @@ function get_sets()
         right_ear="Suppanomimi",
         left_ring=gear.Chirich1,
         right_ring=gear.Chirich2,
-        back=gear.Rosmertas_TP,
+        back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}}
 
     }
     
@@ -137,12 +138,14 @@ function get_sets()
         right_ear="Suppanomimi",
         left_ring=gear.Chirich1,
         right_ring=gear.Chirich2,
-        back=gear.Rosmertas_TP,
+        back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}}
 		
 	}
 	
 	sets.tpDT = {
 	
+        main="Naegling",
+        sub="Thibron", augments={'TP Bonus +1000'},
 		ammo="Aurgelmir orb",
         head="Malignance chapeau",
         body="Malignance Tabard",
@@ -155,7 +158,7 @@ function get_sets()
         right_ear="Suppanomimi",
         left_ring=gear.Chirich1,
         right_ring="Defending Ring",
-        back=gear.Rosmertas_TP,
+        back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}}
 		
 	}
 	
@@ -176,7 +179,7 @@ function get_sets()
         right_ear="Suppanomimi",
         left_ring=gear.Chirich1,
         right_ring=gear.Chirich2,
-        back=gear.Rosmertas_TP,
+        back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}}
     }
 
     sets.bluntDT = {
@@ -195,15 +198,27 @@ function get_sets()
         right_ear="Suppanomimi",
         left_ring=gear.Chirich1,
         right_ring="Defending Ring",
-        back=gear.Rosmertas_TP,
+        back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}}
 		
 	}
 
     sets.learning = {
-
-
-
-
+        
+        main={ name="Iris", augments={'Blue Magic skill +15','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
+        sub="Nibiru Cudgel",
+        ammo="Aurgelmir Orb",
+        head="Luh. Keffiyeh +3",
+        body="Assim. Jubbah +2",
+        hands="Assim. Bazu. +1",
+        legs={ name="Herculean Trousers", augments={'"Triple Atk."+4','Attack+14',}},
+        feet="Luhlaza Charuqs +3",
+        neck={ name="Mirage Stole +1", augments={'Path: A',}},
+        waist="Flume Belt +1",
+        left_ear="Mache Earring",
+        right_ear={ name="Hashishin Earring", augments={'System: 1 ID: 1676 Val: 0','Accuracy+6','Mag. Acc.+6',}},
+        left_ring="Stikini Ring +1",
+        right_ring="Stikini Ring +1",
+        back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}}
 
     }
 
@@ -224,9 +239,29 @@ function get_sets()
         right_ear="Moonshade Earring", augments={'"Mag.Atk.Bns"+4','TP Bonus +250'},
         left_ring="Epaminondas's ring",
         right_ring="Sroda Ring",
-        back=gear.Rosmertas_WS,
+        back={ name="Rosmerta's Cape", augments={'STR+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
 		
 	}
+
+    sets.blackhalo = {
+
+        main="Maxentius",
+		sub="Thibron", augments={'TP Bonus +1000',},
+		ammo="Aurgelmir orb",
+        head="Luhlaza keffiyeh +3",
+        body="Assimilator's jubbah +2",
+        hands="Jhakri cuffs +2",
+        legs="Luhlaza shalwar +3",
+        feet="CSM Boots +1",
+        neck="Republican platinum medal",
+        waist="Sailfi belt +1",
+        left_ear="Regal Earring",
+        right_ear="Moonshade Earring", augments={'"Mag.Atk.Bns"+4','TP Bonus +250'},
+        left_ring="Epaminondas's ring",
+        right_ring="Sroda Ring",
+        back={ name="Rosmerta's Cape", augments={'STR+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
+
+    }
 
 -------------HUD TEXT-----------------------------
 
@@ -246,7 +281,7 @@ end
 
 function update_hud()
     local dt_color = DT_Mode == 'On' and '\\cs(255,50,50)' or '\\cs(50,255,50)'
-    local text = 'RDM MODE '
+    local text = 'BLU MODE '
     text = text .. 'TP: ' .. TP_Mode .. ' '
     text = text .. dt_color .. 'DT: ' .. DT_Mode
 
@@ -341,25 +376,33 @@ function precast(spell)
     if spell.action_type == 'Magic' then
         equip(lock_weapons(sets.precast.fc))
     end
+    
     if spell.type=="WeaponSkill" then
         if spell.english == 'Savage Blade' then
             equip(lock_weapons(sets.SavageBlade))
             end
+        end
+        if spell.english == 'Black Halo' then
+            equip(lock_weapons(sets.blackhalo))
         end
 
 end
 
 function midcast(spell)
 
+---Blue Magic Buff---
+    if spell.skill == 'Blue Magic' then
+        equip(sets.midcast.bluebuff)
+    end
+---Blue Magic Physical---
 
 
 
+---Blue Magic Magical---
 
 
 
-
-
-
+---ETC Spells---
 
 
 
@@ -367,19 +410,11 @@ end
 
 function aftercast(spell)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    if player.status == 'Engaged' then
+        equip_current_tp_set()
+    else
+        equip(sets.aftercast.idledt)
+    end
 
 end
 
