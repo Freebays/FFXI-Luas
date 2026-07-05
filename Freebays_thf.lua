@@ -26,7 +26,7 @@ function get_sets()
         right_ear="Skulker's Earring",
         left_ring="Moonbeam Ring",
         right_ring="Gere Ring",
-        back="Laic Mantle",
+        back="Null Shawl",
         ---This is pretty much a TP set with Treasure Hunter
     }
 
