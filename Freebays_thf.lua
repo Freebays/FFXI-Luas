@@ -41,8 +41,8 @@ function get_sets()
         head={ name="Adhemar Bonnet +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         body={ name="Adhemar Jacket +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         hands={ name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
-        legs="Malignance tights",
-        feet="Malignance Boots",
+        legs={ name="Herculean Trousers", augments={'"Triple Atk."+4','Attack+14',}},
+        feet={ name="Herculean Boots", augments={'"Triple Atk."+4','DEX+10','Accuracy+2','Attack+1',}},
         neck="Anu Torque",
         waist="Reiki Yotai",
         left_ear="Sherida Earring",
@@ -52,7 +52,7 @@ function get_sets()
         back="Null Shawl",
     }
 
-    sets.tpdt = {
+    sets.tpDT = {
 
         main="Tauret",
         sub="Shijo",
@@ -77,11 +77,11 @@ function get_sets()
         main="Naegling",
         sub="Shijo",
         ammo="Perfect Lucky Egg",
-        head="Adhemar Bonnet +1",
-        body="Malignance Tabard",
-        hands="Plunderer's armlets +1",
-        legs="Malignance tights",
-        feet="Malignance Boots",
+        head={ name="Adhemar Bonnet +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        body={ name="Adhemar Jacket +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        hands={ name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        legs={ name="Herculean Trousers", augments={'"Triple Atk."+4','Attack+14',}},
+        feet={ name="Herculean Boots", augments={'"Triple Atk."+4','DEX+10','Accuracy+2','Attack+1',}},
         neck="Anu Torque",
         waist="Reiki Yotai",
         left_ear="Eabani Earring",
@@ -192,8 +192,8 @@ function equip_current_tp_set()
     if DT_Mode == 'On' then
         if TP_Mode == 'Piercing' and sets.tpDT then
             base_set = sets.tpDT
-        elseif TP_Mode == 'Slashing' and sets.blunt then
-            base_set = sets.bluntDT
+        elseif TP_Mode == 'Slashing' and sets.slashingDT then
+            base_set = sets.slashingDT
         end
     end
 
@@ -256,7 +256,7 @@ function aftercast(spell)
 ---This function performs after the action has taken place
 
 	if player.status == 'Engaged' then
-    equip(sets.midcast.th)
+    equip_current_tp_set()
     ---     add_to_chat ('this confirms it goes back to tp set')
     else
         equip(sets.aftercast.idle)
@@ -269,14 +269,7 @@ if new == 'Idle' then
     equip(sets.aftercast.idle)
     ---     add_to_chat('This confirms that leaving combat is a state change')
     elseif new == 'Engaged' then
-        equip(sets.midcast.th)
+        equip_current_tp_set()
         ---     add_to_chat('I am unsure if I put in redundant logic')
         end
         end
-
-
-
-
-
-
-end
