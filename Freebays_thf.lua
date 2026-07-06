@@ -13,7 +13,10 @@ function get_sets()
 
     }
 
-    sets.midcast.treasurehunter = {
+    sets.th = {
+        
+        main="Tauret",
+        sub="Sandung",
         ammo="Perfect Lucky Egg",
         head="Adhemar Bonnet +1",
         body="Malignance Tabard",
@@ -30,20 +33,62 @@ function get_sets()
         ---This is pretty much a TP set with Treasure Hunter
     }
 
-    sets.midcast.regtp = {
+    sets.tp = {
+        
+        main="Tauret",
+        sub="Shijo",
+        ammo="Aurgelmir Orb",
+        head={ name="Adhemar Bonnet +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        body={ name="Adhemar Jacket +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        hands={ name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        legs="Malignance tights",
+        feet="Malignance Boots",
+        neck="Anu Torque",
+        waist="Reiki Yotai",
+        left_ear="Sherida Earring",
+        right_ear="Skulker's Earring",
+        left_ring="Petrov Ring",
+        right_ring="Gere Ring",
+        back="Null Shawl",
+    }
+
+    sets.tpdt = {
+
+        main="Tauret",
+        sub="Shijo",
         ammo="Perfect Lucky Egg",
-        head="Malignance chapeau",
+        head="Adhemar Bonnet +1",
+        body="Malignance Tabard",
+        hands="Malignance Gloves",
+        legs="Malignance tights",
+        feet="Malignance Boots",
+        neck="Anu Torque",
+        waist="Reiki Yotai",
+        left_ear="Eabani Earring",
+        right_ear="Skulker's Earring",
+        left_ring="Moonbeam Ring",
+        right_ring="Gere Ring",
+        back="Null Shawl",
+
+    }
+
+    sets.Slashing = {
+        
+        main="Naegling",
+        sub="Shijo",
+        ammo="Perfect Lucky Egg",
+        head="Adhemar Bonnet +1",
         body="Malignance Tabard",
         hands="Plunderer's armlets +1",
         legs="Malignance tights",
         feet="Malignance Boots",
         neck="Anu Torque",
-        waist="Windbuffet belt +1",
+        waist="Reiki Yotai",
         left_ear="Eabani Earring",
-        right_ear="Mache Earring",
+        right_ear="Skulker's Earring",
         left_ring="Moonbeam Ring",
-        right_ring="Chirich ring +1",
-        back="Moonbeam Cape",
+        right_ring="Gere Ring",
+        back="Null Shawl",
     }
 
     sets.evisceration = {
@@ -81,6 +126,112 @@ function get_sets()
         back="Moonbeam Cape",
 	}
 
+-------------HUD TEXT-----------------------------
+
+	function init_hud()
+		hud_text = texts.new()
+		hud_text:font('Consolas')
+		hud_text:size(12)
+		hud_text:pos(30, 200) -- X,Y position on screen
+		hud_text:color(255, 255, 255)
+		hud_text:bg_color(0, 0, 0, 150)
+		hud_text:show()
+	end
+
+	init_hud()
+	
+end
+
+function update_hud()
+    local dt_color = DT_Mode == 'On' and '\\cs(255,50,50)' or '\\cs(50,255,50)'
+    local text = 'THF MODE '
+    text = text .. 'TP: ' .. TP_Mode .. ' '
+    text = text .. dt_color .. 'DT: ' .. DT_Mode
+
+    hud_text:text(text)
+end
+
+function lock_weapons(equip_set)
+local set = table.copy(equip_set)
+if player.status == 'Engaged' then
+    set.main = nil
+    set.sub = nil
+    set.range= nil
+    -- set.range = nil -- optional
+    end
+    return set
+    end
+
+    function table.copy(t)
+    local t2 = {}
+    for k,v in pairs(t) do
+        t2[k] = v
+        end
+        return t2
+        end
+
+---Below two functions deal with magic vs physical TP sets, macro'd to \ on Windower
+
+function equip_current_tp_set()
+	equip({left_ring=empty, right_ring=empty}) -- clear leftover DT rings
+    
+    add_to_chat(122, 'TP Mode: '..TP_Mode..' | DT: '..DT_Mode)
+
+    local base_set = nil
+
+    -- Base TP mode selection, want to migrate to Switch Case?
+    if TP_Mode == 'Piercing' then
+        base_set = sets.tp
+    elseif TP_Mode == 'Slashing' then
+        base_set = sets.Slashing
+    elseif TP_Mode == 'TH' then
+        base_set = sets.th
+    end 
+
+    -- DT overlay
+    if DT_Mode == 'On' then
+        if TP_Mode == 'Piercing' and sets.tpDT then
+            base_set = sets.tpDT
+        elseif TP_Mode == 'Slashing' and sets.blunt then
+            base_set = sets.bluntDT
+        end
+    end
+
+    equip(base_set)
+end
+
+function self_command(command)
+     if command == 'toggleTP' then
+        if TP_Mode == 'Piercing' then
+            TP_Mode = 'Slashing'
+        elseif TP_Mode == 'Slashing' then
+            TP_Mode = 'TH'
+        else
+            TP_Mode = 'Piercing'
+        end
+		
+        ---add_to_chat(122, 'TP Mode: '..TP_Mode)
+        if player.status == 'Engaged' then equip_current_tp_set() end
+		update_hud()
+    end
+
+    -- Toggle DT mode
+    if command == 'toggleDT' then
+        if DT_Mode == 'Off' then
+            DT_Mode = 'On'
+        else
+            DT_Mode = 'Off'
+        end
+
+        ---add_to_chat(122, 'DT Mode: '..DT_Mode)
+        if player.status == 'Engaged' then equip_current_tp_set() end
+		update_hud()
+    end
+
+end
+
+-----END OF EQUIP FUNCTION---
+
 function precast(spell)
 
 
@@ -105,7 +256,7 @@ function aftercast(spell)
 ---This function performs after the action has taken place
 
 	if player.status == 'Engaged' then
-    equip(sets.midcast.treasurehunter)
+    equip(sets.midcast.th)
     ---     add_to_chat ('this confirms it goes back to tp set')
     else
         equip(sets.aftercast.idle)
@@ -118,7 +269,7 @@ if new == 'Idle' then
     equip(sets.aftercast.idle)
     ---     add_to_chat('This confirms that leaving combat is a state change')
     elseif new == 'Engaged' then
-        equip(sets.midcast.treasurehunter)
+        equip(sets.midcast.th)
         ---     add_to_chat('I am unsure if I put in redundant logic')
         end
         end
