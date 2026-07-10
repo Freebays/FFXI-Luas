@@ -141,8 +141,11 @@ function get_sets()
 	}
 
     sets.midcast.Refresh = {
+        main="Daybreak",
+        sub="Archduke's shield",
         head="Amalric Coif +1", augments={'MP+80','Mag. Acc. +20','"Mag. Atk. Bns. +20"',},
         body="Atrophy Tabard +3",
+        legs="Lethargy fuseau +2",
         waist="Gishdubar Sash",
     }
 
@@ -377,7 +380,7 @@ function get_sets()
         feet="Malignance boots",
         neck="Anu Torque",
         waist="Orpheus's Sash",
-        left_ear="Eabani Earring",
+        left_ear="Dedition Earring",
         right_ear="Sherida Earring",
         left_ring=gear.Chirich1,
         right_ring=gear.Chirich2,
@@ -396,7 +399,7 @@ function get_sets()
         feet="Malignance boots",
         neck="Anu Torque",
         waist="Orpheus's Sash",
-        left_ear="Eabani Earring",
+        left_ear="Dedition Earring",
         right_ear="Sherida Earring",
         left_ring=gear.Chirich1,
         right_ring="Defending Ring",
