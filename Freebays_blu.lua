@@ -59,6 +59,72 @@ function get_sets()
         back="",
 	
 	}
+
+    sets.midcast.bluebuff = {
+        main={ name="Iris", augments={'Blue Magic skill +15','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
+        head="Luhlaza Keffiyeh +3",
+        body="Assimilator's jubbah +2",
+        feet="Luhlaza Charuqs +3",
+        neck={ name="Mirage Stole +1", augments={'Path: A',}},
+        right_ear={ name="Hashishin Earring", augments={'System: 1 ID: 1676 Val: 0','Accuracy+6','Mag. Acc.+6',}},
+        left_ring="Stikini Ring +1",
+        right_ring="Stikini Ring +1",
+    }
+
+    sets.midcast.bluephysical = {
+        main="Naegling",
+        sub="Maxentius",
+        ammo="Aurgelmir Orb",
+        head="Luh. Keffiyeh +3",
+        body="Luhlaza Jubbah +3",
+        hands="CSM Gloves +1",
+        legs="Jhakri Slops +2",
+        feet="Luhlaza Charuqs +3",
+        neck={ name="Mirage Stole +1", augments={'Path: A',}},
+        waist="Prosilio Belt",
+        left_ear="Mache Earring",
+        right_ear="Flame Pearl",
+        left_ring="Sroda Ring",
+        right_ring="Ilabrat Ring",
+        back={ name="Rosmerta's Cape", augments={'STR+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
+        }
+
+    sets.midcast.bluemagic = {
+        main="Maxentius",
+        sub="Archduke's Sword",
+        ammo="Ghastly Tathlum",
+        head="Jhakri Coronal +2",
+        body="Jhakri Robe +2",
+        hands="Jhakri Cuffs +2",
+        legs="Jhakri Slops +2",
+        feet="Jhakri Pigaches +2",
+        neck="Sibyl Scarf",
+        waist="Orpheus's Sash",
+        left_ear="Regal Earring",
+        right_ear="Friomisi Earring",
+        left_ring="Metamor. Ring +1",
+        right_ring="Weather. Ring",
+        back="Seshaw Cape",
+    }
+
+    sets.midcast.bluehealing = {
+        main="Nibiru Cudgel",
+        sub="Archduke's Sword",
+        ammo="Hydrocera",
+        head="Luh. Keffiyeh +3",
+        body="Nyame Mail",
+        hands="Nyame Gauntlets",
+        legs="Gyve Trousers",
+        feet="Nyame Sollerets",
+        neck="Phalaina Locket",
+        waist="Gishdubar Sash",
+        left_ear="Regal Earring",
+        right_ear="Meili Earring",
+        left_ring="Gelatinous Ring",
+        right_ring="Defending Ring",
+        back="Aurist's Cape +1",
+
+    }
 	
 -----------------------------------------------------
 	
@@ -390,16 +456,105 @@ end
 
 function midcast(spell)
 
----Blue Magic Buff---
-    if spell.skill == 'Blue Magic' then
-        equip(sets.midcast.bluebuff)
+---Blue Magic---
+    if spell.skill == "Blue Magic" then
+        local base_set = sets.midcast.bluebuff
+
+        local potency_spells = {
+           ['Erratic Flutter'] = true,
+           ['Battery Charge'] = true,
+           ['Carcharian Verve'] = true,
+           ['Mighty Guard'] = true,
+           ['Nat. Meditation'] = true,
+           ['Occultation'] = true,
+           ['Refueling'] = true,
+           ['Saline Coat'] = true,
+           ['Triumphant Roar'] = true,
+           ['Cocoon'] = true,
+           ['Barrier Tusk'] = true,
+           ['Diamondhide'] = true,
+           ['Magic Barrier'] = true,
+           ['Metallic Body'] = true,
+           ['Plasma Charge'] = true,
+           ['Pyric Bulwark'] = true,
+           ['Reactor Cool'] = true,
+           ['Harden Shell'] = true,
+           ['Fantod'] = true,
+
+        }
+
+        local physical_spells = {
+            ['Asuran Claws'] = true,
+            ['Bludgeon'] = true,
+            ['Body Slam'] = true,
+            ['Death Scissors'] = true,
+            ['Dimensional Death'] = true,
+            ['Empty Thrash'] = true,
+            ['Quadrastrike'] = true,
+            ['Ram Charge'] = true,
+            ['Saurian Slide'] = true,
+            ['Spinal Cleave'] = true,
+            ['Sweeping Gouge'] = true,
+            ['Uppercut'] = true,
+            ['Sinker Drill'] = true,
+            ['Thrashing Assault'] = true,
+            ['Vertical Cleave'] = true,
+            ['Whirl of Rage'] = true,
+            ['Paralyzing Triad'] = true,
+            ['Power Attack'] = true,
+            ['Frypan'] = true,
+            ['Mandibular Bite'] = true,
+            ['Queasyshroom'] = true,
+            ['Screwdriver'] = true,
+            ['Spiral Spin'] = true,
+            ['Sub-zero Smash'] = true,
+            ['Tourbillion'] = true,
+        }
+
+        local healing_spells = {
+            ['Healing Breeze'] = true,
+            ['Magic Fruit'] = true,
+            ['Plenilune Embrace'] = true,
+            ['Pollen'] = true,
+            ['Restoral'] = true,
+            ['White Wind'] = true,
+        }
+
+        local damage_spells = {
+            ['Blazing Bound'] = true,
+            ['Death Ray'] = true,
+            ['Delta Thrust'] = true,
+            ['Glutinous Dart'] = true,
+            ['Hecatomb Wave'] = true,
+            ['Leafstorm'] = true,
+            ['Rail Cannon'] = true,
+            ['Regurgitation'] = true,
+            ['Retinal Glare'] = true,
+            ['Searing Tempest'] = true,
+            ['Subduction'] = true,
+            ['Thermal Pulse'] = true,
+            ['Tenebral Crush'] = true,
+        }
+
+        if potency_spells[spell.english] then
+            base_set = sets.midcast.bluebuff
+        end
+
+        if physical_spells[spell.english] then
+            base_set = sets.midcast.bluephysical
+        end
+
+        if healing_spells[spell.english] then
+            base_set = sets.midcast.bluehealing
+        end
+
+        if damage_spells[spell.english] then
+            base_set = sets.midcast.bluemagic
+        end
+
+        equip(lock_weapons(base_set))
+
     end
----Blue Magic Physical---
-
-
-
----Blue Magic Magical---
-
 
 
 ---ETC Spells---
