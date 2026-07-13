@@ -1,6 +1,10 @@
+TP_Mode = 'Piercing'
+DT_Mode = 'Off'
+hud_text = nil
 
 gear = {}
 gear.Toutatis_EVIS = { name="Toutatis's cape", augments={'DEX+20','Accuracy+20 Attack+20','Critical hit rate +10%',}}
+
 
 function get_sets()
 
@@ -177,7 +181,8 @@ function get_sets()
 	end
 
 	init_hud()
-	
+	update_hud()
+    
 end
 
 function update_hud()
@@ -276,6 +281,9 @@ function precast(spell)
 if spell.type=="WeaponSkill" then
     if spell.english == 'Evisceration' then
         equip(sets.evisceration)
+        end
+    if spell.english == 'Savage Blade' then
+        equip(sets.SavageBlade)
         end
 
 end
