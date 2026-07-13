@@ -13,7 +13,7 @@ function get_sets()
 
     }
 
-    sets.th = {
+    sets.th = {a
         
         main="Tauret",
         sub="Sandung",

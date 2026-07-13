@@ -293,8 +293,8 @@ function get_sets()
 	
 		main="Naegling",
 		sub="Thibron", augments={'TP Bonus +1000',},
-		ammo="Aurgelmir orb",
-        head="Luhlaza keffiyeh +3",
+		ammo="Oshasha's treatise",
+        head="Hashishin kavuk +3",
         body="Assimilator's jubbah +2",
         hands="Jhakri cuffs +2",
         legs="Luhlaza shalwar +3",
@@ -313,8 +313,8 @@ function get_sets()
 
         main="Maxentius",
 		sub="Thibron", augments={'TP Bonus +1000',},
-		ammo="Aurgelmir orb",
-        head="Luhlaza keffiyeh +3",
+		ammo="Oshasha's treatise",
+        head="Hashishin kavuk +3",
         body="Assimilator's jubbah +2",
         hands="Jhakri cuffs +2",
         legs="Luhlaza shalwar +3",
