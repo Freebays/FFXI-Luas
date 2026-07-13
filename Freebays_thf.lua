@@ -4,7 +4,7 @@ hud_text = nil
 
 gear = {}
 gear.Toutatis_EVIS = { name="Toutatis's cape", augments={'DEX+20','Accuracy+20 Attack+20','Critical hit rate +10%',}}
-
+gear.Toutatis_SAVAGE = { name="Toutatis's cape", augments={'STR+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}}
 
 function get_sets()
 
@@ -139,14 +139,15 @@ function get_sets()
         body="Nyame Mail",
         hands="Meg. Gloves +2",
         legs="Plun. Culottes +3",
-        feet="Nyame Sollerets",
+        feet={ name="Herculean Boots", augments={'Weapon skill damage +5%','STR+9',}},
         neck="Rep. Plat. Medal",
         waist="Sailfi Belt +1",
         left_ear="Sherida Earring",
         right_ear="Moonshade Earring",
         left_ring="Sroda Ring",
         right_ring="Cornelia's Ring",
-        back="Moonbeam Cape",
+        back={ name="Toutatis's cape", augments={'STR+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
+
     }
 	
 	sets.aftercast = {}
