@@ -13,11 +13,11 @@ function get_sets()
 
     }
 
-    sets.th = {a
+    sets.th = {
         
-        main="Tauret",
-        sub="Sandung",
-        ammo="Perfect Lucky Egg",
+        main="Naegling",
+        sub="Fusetto +2", augments={'TP Bonus +1000',},
+        ammo="Aurgelmir orb",
         head="Adhemar Bonnet +1",
         body="Malignance Tabard",
         hands="Plunderer's armlets +1",
@@ -28,7 +28,7 @@ function get_sets()
         left_ear="Eabani Earring",
         right_ear="Skulker's Earring",
         left_ring="Moonbeam Ring",
-        right_ring="Gere Ring",
+        right_ring="Hoxne ring",
         back="Null Shawl",
         ---This is pretty much a TP set with Treasure Hunter
     }
@@ -75,8 +75,8 @@ function get_sets()
     sets.Slashing = {
         
         main="Naegling",
-        sub="Shijo",
-        ammo="Perfect Lucky Egg",
+        sub="Fusetto +2", augments={'TP Bonus +1000',},
+        ammo="Aurgelmir Orb",
         head={ name="Adhemar Bonnet +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         body={ name="Adhemar Jacket +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         hands={ name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
@@ -89,6 +89,26 @@ function get_sets()
         left_ring="Moonbeam Ring",
         right_ring="Gere Ring",
         back="Null Shawl",
+    }
+
+    sets.slashingDT = {
+
+        main="Naegling",
+        sub="Fusetto +2", augments={'TP Bonus +1000',},
+        ammo="Aurgelmir Orb",
+        head="Malignance chapeau",
+        body="Malignance Tabard",
+        hands="Malignance Gloves",
+        legs="Malignance tights",
+        feet="Malignance Boots",
+        neck="Anu Torque",
+        waist="Reiki Yotai",
+        left_ear="Eabani Earring",
+        right_ear="Skulker's Earring",
+        left_ring="Moonbeam Ring",
+        right_ring="Defending Ring",
+        back="Moonbeam Cape",
+
     }
 
     sets.evisceration = {
@@ -105,6 +125,24 @@ function get_sets()
         left_ring="Epaminondas's ring",
         right_ring="Mummu Ring",
         back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Crit.hit rate+10',}},
+    }
+
+    sets.SavageBlade = {
+        main="Naegling",
+        sub="Fusetto +2",
+        ammo="Oshasha's Treatise",
+        head="Pill. Bonnet +3",
+        body="Nyame Mail",
+        hands="Meg. Gloves +2",
+        legs="Plun. Culottes +3",
+        feet="Nyame Sollerets",
+        neck="Rep. Plat. Medal",
+        waist="Sailfi Belt +1",
+        left_ear="Sherida Earring",
+        right_ear="Moonshade Earring",
+        left_ring="Sroda Ring",
+        right_ring="Cornelia's Ring",
+        back="Moonbeam Cape",
     }
 	
 	sets.aftercast = {}

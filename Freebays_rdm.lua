@@ -466,7 +466,7 @@ function get_sets()
 	
 	sets.TH = {
         main="Naegling",
-        sub="Colada",
+        sub="Thibron", augments={'TP Bonus +1000',},
         ammo="Perfect Lucky Egg",
         head="Malignance chapeau",
         body="Malignance Tabard",
@@ -478,7 +478,7 @@ function get_sets()
         left_ear="Sherida Earring",
         right_ear="Dedition Earring",
         left_ring=gear.Chirich1,
-        right_ring=gear.Chirich2,
+        right_ring=gear."Hoxne ring",
         back=gear.Sucellos_DW,
 
     }

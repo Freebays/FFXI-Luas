@@ -303,7 +303,7 @@ function get_sets()
         waist="Sailfi belt +1",
         left_ear="Regal Earring",
         right_ear="Moonshade Earring", augments={'"Mag.Atk.Bns"+4','TP Bonus +250'},
-        left_ring="Epaminondas's ring",
+        left_ring="Cornelia's Ring",
         right_ring="Sroda Ring",
         back={ name="Rosmerta's Cape", augments={'STR+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
 		
@@ -323,7 +323,7 @@ function get_sets()
         waist="Sailfi belt +1",
         left_ear="Regal Earring",
         right_ear="Moonshade Earring", augments={'"Mag.Atk.Bns"+4','TP Bonus +250'},
-        left_ring="Epaminondas's ring",
+        left_ring="Cornelia's Ring",
         right_ring="Sroda Ring",
         back={ name="Rosmerta's Cape", augments={'STR+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
 
