@@ -6,7 +6,7 @@ hud_text = nil
 
 gear = {}
 gear.Sucellos_MND = { name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Weapon Skill Damage +10%',}}
-gear.Sucellos_STR = { name="Sucellos's Cape", augments={'STR+30','Accuracy+20 Attack+20','Weapon Skill Damage +10%',}}
+gear.Sucellos_STR = { name="Sucellos's Cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}}
 gear.Sucellos_DW  = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dual Wield"+10',}}
 gear.Chirich1 = { name="Chirich Ring +1", bag="Wardrobe7" }
 gear.Chirich2 = { name="Chirich Ring +1", bag="Wardrobe6" }
