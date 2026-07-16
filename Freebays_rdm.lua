@@ -521,6 +521,24 @@ function get_sets()
         back=gear.Sucellos_DW,
 
     }
+
+    sets.tpPiercing = {
+        main="Tauret",
+        sub="Ternion dagger +1", augments={'DMG:+17', 'Accuracy+40', 'Mag. Acc.+40', 'Weapon skill damage +5%',},
+        ammo="Aurgelmir orb",
+        head="Malignance chapeau",
+        body="Malignance Tabard",
+        hands="Malignance gloves",
+        legs="Malignance tights",
+        feet="Malignance boots",
+        neck="Anu Torque",
+        waist="Reiki Yotai",
+        left_ear="Sherida Earring",
+        right_ear="Eabani earring",
+        left_ring=gear.Chirich1,
+        right_ring=gear.Chirich2,
+        back="Null Shawl",
+    }
 	
 
 ------------------------WEAPONSKILL SETS-------------------------
@@ -637,6 +655,24 @@ function get_sets()
 
 	}
 
+    sets.AeolianEdge = {
+        main="Tauret",
+        sub="Ternion dagger +1", augments={'DMG:+17', 'Accuracy+40', 'Mag. Acc.+40', 'Weapon skill damage +5%',},
+        ammo="Sroda Tathlum",
+        head="Lethargy chappel +2",
+        body="Lethargy sayon +3",
+        hands="Jhakri Cuffs +2",
+        legs="Lethargy fuseau +2",
+        feet="Lethargy houseaux +3",
+        neck="Sibyl scarf",
+        waist="Orpheus's Sash",
+        left_ear="Malignance Earring",
+        right_ear="Moonshade Earring", augments={'"Mag.Atk.Bns"+4','TP Bonus +250'},
+        left_ring="Cornelia's Ring",
+        right_ring="Epaminondas's ring",
+        back=gear.Sucellos_MND,
+    }
+
 -----------------------------HUD TEXT-----------------------------------------------
 
 	function init_hud()
@@ -703,6 +739,8 @@ function equip_current_tp_set()
         base_set = sets.TH 
     elseif TP_Mode == 'Odin' then
         base_set = sets.Odin
+    elseif TP_Mode == 'Piercing' then
+        base_set = sets.tpPiercing
     end
 
     -- DT overlay
@@ -715,6 +753,8 @@ function equip_current_tp_set()
             base_set = sets.tpExDT
         elseif TP_Mode == 'Blunt' and sets.bluntDT then
             base_set = sets.bluntDT
+        elseif TP_Mode == 'Piercing' and sets.tpPiercingDT then
+            base_set = sets.tpPiercingDT
         end
     end
 
@@ -733,6 +773,8 @@ function self_command(command)
 			TP_Mode = 'TH'
 		elseif TP_Mode == 'TH' then
             TP_Mode = 'Odin'
+        elseif TP_Mode == 'Odin' then
+            TP_Mode = 'Piercing'
         else
             TP_Mode = 'Physical'
         end
@@ -783,6 +825,9 @@ function precast(spell)
 			end
         if spell.english == 'Knights of Round' then
             equip(lock_weapons(sets.KoR))
+            end
+        if spell.english == 'Aeolian Edge' then
+            equip(lock_weapons(sets.AeolianEdge))
             end
     if spell.type=="JobAbility" and spell.english == 'Composure' then
             equip(lock_weapons(sets.precast.composure))

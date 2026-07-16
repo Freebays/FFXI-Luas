@@ -126,7 +126,7 @@ function get_sets()
         waist="Soil belt",
         left_ear="Odr Earring",
         right_ear="Moonshade Earring", augments={'"Mag.Atk.Bns"+4','TP Bonus +250'},
-        left_ring="Epaminondas's ring",
+        left_ring="Cornelia's Ring",
         right_ring="Mummu Ring",
         back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Crit.hit rate+10',}},
     }
