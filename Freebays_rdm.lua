@@ -2,6 +2,7 @@
 lock_weapons_during_combat = true
 TP_Mode = 'Physical' --Does Physical, Magical, Piercing, Treasure Hunter, Odin?
 DT_Mode = 'Off'
+MB_Next = false
 hud_text = nil
 
 gear = {}
@@ -184,7 +185,7 @@ function get_sets()
         feet="Amalric nails +1", augments={'INT+12','Mag.Acc.+20','"Mag.Atk.Bns."+20'},
         neck="Sibyl Scarf",
         waist="Orpheus's sash",
-        left_ear="Friomisi Earring",
+        left_ear="Regal Earring",
         right_ear="Malignance earring",
         left_ring="Metamorph Ring +1",
         right_ring="Jhakri ring",
@@ -196,15 +197,15 @@ function get_sets()
         sub="Ammurapi Shield",
         ammo="Ghastly tathlum",
         head="Ea Hat",
-        body="Amalric doublet +1", augments={'MP+80','Mag.Acc.+20','"Mag.Atk.Bns"+20'},
+        body="Ea Houppelande",
         hands="Amalric gages +1", augments={'INT+12','Mag.Acc.+20','"Mag.Atk.Bns."+20'},
         legs="Ea Slops",
-        feet="Amalric nails +1", augments={'INT+12','Mag.Acc.+20','"Mag.Atk.Bns."+20'},
-        neck="Sanctity necklace",
-        waist="Latria Sash",
-        left_ear="Friomisi Earring",
+        feet="Jhakri pigaches +2",
+        neck="Sibyl Scarf",
+        waist="Orpheus's sash",
+        left_ear="Regal Earring",
         right_ear="Malignance earring",
-        left_ring="Resonance Ring",
+        left_ring="Metamorph Ring +1",
         right_ring="Jhakri ring",
         back="Seshaw cape",
     }
@@ -792,6 +793,11 @@ function self_command(command)
             DT_Mode = 'Off'
         end
 
+    -- Elemental MB Stuff
+    if command == 'mbnext' then
+        MB_Next = true
+    end
+
         ---add_to_chat(122, 'DT Mode: '..DT_Mode)
         if player.status == 'Engaged' then equip_current_tp_set() end
 		update_hud()
@@ -969,7 +975,14 @@ end
  --------ELEMENTAL MAGIC------------
 
 if spell.skill == "Elemental Magic" then
-    equip(lock_weapons(sets.midcast.elementalfreenuke))
+    local base_set = sets.midcast.elementalfreenuke
+
+    if MB_Next then
+        base_set = sets.midcast.elementalmb
+        MB_Next = false
+    end
+
+    equip(lock_weapons(base_set))
 end
 
 --------------
