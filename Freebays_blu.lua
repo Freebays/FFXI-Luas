@@ -39,6 +39,26 @@ function get_sets()
 
 	}
 
+    sets.precast.blu = {
+
+        main={ name="Iris", augments={'Blue Magic skill +15','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
+        sub={ name="Colada", augments={'DEX+8','Accuracy+29','"Treasure Hunter"+2',}},
+        ammo="Impatiens",
+        head={ name="Amalric Coif +1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        body="Hashishin Mintan +2",
+        hands="Hashishin Bazubands +2",
+        legs="Aya. Cosciales +2",
+        feet="Jhakri Pigaches +2",
+        neck="Voltsurge Torque",
+        waist="Witful Belt",
+        left_ear="Loquac. Earring",
+        right_ear={ name="Hashishin Earring", augments={'System: 1 ID: 1676 Val: 0','Accuracy+6','Mag. Acc.+6',}},
+        left_ring="Prolix Ring",
+        right_ring="Kishar Ring",
+        back="Swith Cape",
+
+    }
+
 -------------------------------------------------------
 
 	--MIDCAST--
@@ -93,10 +113,10 @@ function get_sets()
         main="Maxentius",
         sub="Archduke's Sword",
         ammo="Ghastly Tathlum",
-        head="Jhakri Coronal +2",
-        body="Jhakri Robe +2",
-        hands="Jhakri Cuffs +2",
-        legs="Jhakri Slops +2",
+        head="Hashishin Kavuk +3",
+        body="Hashishin Mintan +2",
+        hands="Hashishin Bazubands +2",
+        legs="Hashishin Tayt +2",
         feet="Jhakri Pigaches +2",
         neck="Sibyl Scarf",
         waist="Orpheus's Sash",
@@ -439,11 +459,15 @@ end
 
 function precast(spell)
 
-    if spell.action_type == 'Magic' then
+    if spell.type == 'BlueMagic' then
+        equip(lock_weapons(sets.precast.blu))
+    
+    elseif spell.action_type == 'Magic' then
         equip(lock_weapons(sets.precast.fc))
+        
     end
     
-    if spell.type=="WeaponSkill" then
+    if spell.type == "WeaponSkill" then
         if spell.english == 'Savage Blade' then
             equip(lock_weapons(sets.SavageBlade))
             end
@@ -534,6 +558,10 @@ function midcast(spell)
             ['Subduction'] = true,
             ['Thermal Pulse'] = true,
             ['Tenebral Crush'] = true,
+            ['Magic Hammer'] = true,
+            ['Anvil Lightning'] = true,
+            ['Entomb'] = true,
+            ['Spectral Floe'] = true,
         }
 
         if potency_spells[spell.english] then

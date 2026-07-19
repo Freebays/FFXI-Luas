@@ -37,6 +37,26 @@ function get_sets()
         ---This is pretty much a TP set with Treasure Hunter
     }
 
+
+    sets.thdagger = {
+        
+        main="Tauret",
+        sub="Shijo",
+        ammo="Aurgelmir Orb",
+        head={ name="Adhemar Bonnet +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        body={ name="Adhemar Jacket +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        hands={"Plunderer's Armlets +1"},
+        legs={ name="Herculean Trousers", augments={'"Triple Atk."+4','Attack+14',}},
+        feet={ name="Herculean Boots", augments={'"Triple Atk."+4','DEX+10','Accuracy+2','Attack+1',}},
+        neck="Anu Torque",
+        waist="Reiki Yotai",
+        left_ear="Sherida Earring",
+        right_ear="Skulker's Earring",
+        left_ring="Hoxne Ring",
+        right_ring="Gere Ring",
+        back="Null Shawl",
+    }
+
     sets.tp = {
         
         main="Tauret",
@@ -117,10 +137,10 @@ function get_sets()
 
     sets.evisceration = {
         ammo="Yetshila",
-        head="Adhemar Bonnet +1",
+        head="Blistering Sallet +1",
         body="Mummu jacket +2",
         hands="Mummu Wrists +2",
-        legs="Mummu kecks +2",
+        legs={ name="Lustr. Subligar +1", augments={'Accuracy+20','DEX+8','Crit. hit rate+3%',}},
         feet="Adhemar Gamashes +1",
         neck="Soil gorget",
         waist="Soil belt",
@@ -230,6 +250,8 @@ function equip_current_tp_set()
         base_set = sets.Slashing
     elseif TP_Mode == 'TH' then
         base_set = sets.th
+    elseif TP_Mode == 'TH Dagger' then
+        base_set = sets.thdagger
     end 
 
     -- DT overlay
@@ -250,6 +272,8 @@ function self_command(command)
             TP_Mode = 'Slashing'
         elseif TP_Mode == 'Slashing' then
             TP_Mode = 'TH'
+        elseif TP_Mode == 'TH' then
+            TP_Mode = 'TH Dagger'
         else
             TP_Mode = 'Piercing'
         end
